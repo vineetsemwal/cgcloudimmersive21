@@ -33,9 +33,8 @@ public class JpaExperiment2 {
         display(fetched);
 
         Employee tanvi=new Employee("tanvi",900000);
-        tanvi=add2(tanvi);
-        tanvi.setName("tanvi dalvi");
-        add2(tanvi);
+        add(tanvi);
+
 
         Department dev=new Department(10,"dev");
         add(dev);
@@ -51,13 +50,6 @@ public class JpaExperiment2 {
     }
 
 
-    public Employee add2(Employee employee) {
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        employee=entityManager.merge(employee);
-        transaction.commit();
-        return employee;
-    }
 
     public void update(Employee employee) {
         EntityTransaction transaction = entityManager.getTransaction();
