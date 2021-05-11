@@ -38,7 +38,7 @@ public class JpaExperiment {
          prajakta.setBalance(50000);
          prajakta.setName("prajakta deshmukh");
          //
-        //merge has 2 options , one is updating previously existing row another is inserting new row if
+        //merge has 2 operations , one is updating previously existing row another is inserting new row if
         // primary field of object does not exist in the table
         //
          entityManager.merge(prajakta);
