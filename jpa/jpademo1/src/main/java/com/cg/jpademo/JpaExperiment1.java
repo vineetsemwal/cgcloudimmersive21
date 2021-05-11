@@ -7,12 +7,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class JpaExperiment {
+public class JpaExperiment1 {
 
     private EntityManager entityManager;
 
     public static void main(String args[]) {
-        JpaExperiment experiment=new JpaExperiment();
+        JpaExperiment1 experiment=new JpaExperiment1();
         experiment.start();
     }
 
