@@ -6,7 +6,6 @@
   version="2.0">
 	<persistence-unit name="emp-ms" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>com.cg.onetoonesingle.entities.Student</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/training" />
