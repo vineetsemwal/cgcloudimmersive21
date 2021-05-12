@@ -3,7 +3,7 @@ package com.cg.onetomanysingle.entities;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name="departments")
+@Table(name = "departments")
 @Entity
 public class Department {
 
@@ -12,17 +12,22 @@ public class Department {
     private Integer deptId;
 
     private String deptName;
-
+/*
+    @JoinTable(name = "emp_dept",
+            joinColumns = @JoinColumn(name = "deptid"),
+            inverseJoinColumns=@JoinColumn(name="empid")
+    )
+    */
     @OneToMany
     private List<Employee> employees;
 
-    public Department(){
+    public Department() {
 
     }
 
-    public Department(String name,List<Employee>employees){
-        this.deptName=name;
-        this.employees=employees;
+    public Department(String name, List<Employee> employees) {
+        this.deptName = name;
+        this.employees = employees;
     }
 
     public Integer getDeptId() {
