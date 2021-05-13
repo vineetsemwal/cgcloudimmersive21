@@ -2,6 +2,7 @@
 ## Follow Layered Architecture
 
  Customer{
+ 
  id: int 
  
  name: string,
