@@ -3,7 +3,9 @@
 
  Customer{
  id: int 
+ 
  name: string,
+ 
   age :int
  
  
