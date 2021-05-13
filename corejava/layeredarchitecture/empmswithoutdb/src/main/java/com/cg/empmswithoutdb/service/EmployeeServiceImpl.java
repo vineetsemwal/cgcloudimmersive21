@@ -7,6 +7,8 @@ import com.cg.empmswithoutdb.exceptions.InvalidEmployeeNameException;
 import com.cg.empmswithoutdb.exceptions.InvalidEmployeeIdException;
 import com.cg.empmswithoutdb.exceptions.InvalidSalaryException;
 
+import java.util.List;
+
 public class EmployeeServiceImpl implements IEmployeeService{
 
     private IEmployeeDao dao=new EmployeeDaoImpl();
@@ -29,10 +31,17 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
+    public List<Employee> findAll() {
+       List<Employee>list= dao.findAll();
+       return list;
+    }
+
+    @Override
     public Employee changeSalary(int empId, double newSalary) {
         validateId(empId);
         validateSalary(newSalary);
         Employee employee=dao.findById(empId);
+        employee.setSalary(newSalary);
         Employee saved=dao.update(employee);
         return saved ;
     }
