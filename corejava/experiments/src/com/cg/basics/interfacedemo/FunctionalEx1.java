@@ -9,12 +9,24 @@ public class FunctionalEx1 {
 
             @Override
             public int mul(int num1, int num2) {
-                return num1+ num2;
+                return num1* num2;
             }
         };
 
-       int result= multiply.mul(4,5);
-       System.out.println("result="+result);
+      int result= multiply.mul(4,5);
+       System.out.println("anonymous result="+result);
+
+       IMultiply lambdaExpression=(num1,num2)-> num1*num2;
+       int expressionResult=lambdaExpression.mul(7,4);
+      System.out.println("expression result="+expressionResult);
+
+      IMultiply lambdaBlock=(num1,num2)->{
+          System.out.println("inside lambda block");
+          int mulResult=num1*num2;
+          return mulResult;
+      };
+      int lambdaBlockResult=lambdaBlock.mul(5,10);
+      System.out.println("lambda block result="+lambdaBlockResult);
     }
 
 
