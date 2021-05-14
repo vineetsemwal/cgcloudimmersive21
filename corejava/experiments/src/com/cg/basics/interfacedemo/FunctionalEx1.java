@@ -5,7 +5,7 @@ import com.cg.basics.java8deatures.IMultiply;
 public class FunctionalEx1 {
 
     public static void main(String[] args){
-        IMultiply multiply=new IMultiply(){
+        IMultiply prajakta=new IMultiply(){
 
             @Override
             public int mul(int num1, int num2) {
@@ -13,7 +13,7 @@ public class FunctionalEx1 {
             }
         };
 
-      int result= multiply.mul(4,5);
+      int result= prajakta.mul(4,5);
        System.out.println("anonymous result="+result);
 
        IMultiply lambdaExpression=(num1,num2)-> num1*num2;
