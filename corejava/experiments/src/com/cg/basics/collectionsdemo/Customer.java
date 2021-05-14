@@ -35,4 +35,29 @@ public class Customer implements Comparable<Customer>{
         int compared = this.age-that.age;
         return compared;
     }
+
+
+    @Override
+    public int hashCode() {
+      return name.hashCode();
+    }
+
+
+    /*
+    hashset
+      c1.equals(c2)
+     */
+    @Override
+    public boolean equals(Object arg){
+        if(this==arg){
+            return true;
+        }
+        if(arg ==null || !(arg instanceof Customer)){
+            return false ;
+        }
+        Customer that=(Customer)arg;
+        boolean check=this.name.equals(that.name);
+        return check;
+    }
+
 }
