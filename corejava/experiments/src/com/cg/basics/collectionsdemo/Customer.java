@@ -32,7 +32,7 @@ public class Customer implements Comparable<Customer>{
      */
     @Override
     public int compareTo(Customer that) {
-        int compared = this.age-that.age;
+        int compared = this.name.compareTo(that.name);
         return compared;
     }
 
@@ -42,9 +42,10 @@ public class Customer implements Comparable<Customer>{
       return name.hashCode();
     }
 
-
     /*
-    hashset
+
+    list.contain(c1)
+    c2,c3,c1,c4
       c1.equals(c2)
      */
     @Override

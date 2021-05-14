@@ -12,7 +12,8 @@ public class SetEx1 {
       iterator()
      */
     public static void main(String args[]){
-        Set<String>set=new HashSet<>();
+        Comparator<String>comparator=new StringComparator();
+        Set<String>set=new TreeSet<>(comparator);
         String element1="one";
         String element2="zero";
         String element3="two";
