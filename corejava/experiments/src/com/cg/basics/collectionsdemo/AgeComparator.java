@@ -9,7 +9,7 @@ public class AgeComparator implements Comparator<Customer> {
         //customer 1 age > customer 2 age ,return +ve
         //customer 2 age <customer 1 age, return -ve
         // both equal ,. return 0
-        int compared= customer1.getAge()- customer2.getAge();
+        int compared= customer2.getAge()- customer1.getAge();
         return compared;
     }
 }

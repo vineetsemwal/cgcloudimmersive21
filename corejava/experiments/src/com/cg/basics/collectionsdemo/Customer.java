@@ -1,6 +1,6 @@
 package com.cg.basics.collectionsdemo;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
     private String name;
     private int age;
 
@@ -23,5 +23,16 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    /*
+      Customer c1=new Customer("chaitu",21);
+      Customer c2=new Customer("priti",22);
+       c1.compareTo(c2)
+     */
+    @Override
+    public int compareTo(Customer that) {
+        int compared = this.age-that.age;
+        return compared;
     }
 }

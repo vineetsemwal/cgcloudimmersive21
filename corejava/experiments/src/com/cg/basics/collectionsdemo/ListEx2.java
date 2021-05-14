@@ -12,8 +12,9 @@ public class ListEx2 {
            list.add(priti);
            list.add(chaitu);
            list.add(raju);
-           Comparator<Customer>ageComparator=new NameComparator();
-           list.sort(ageComparator);
+          // Comparator<Customer>comparator=new AgeComparator();
+          // list.sort(comparator);
+            Collections.sort(list);
            for (Customer customer:list){
                System.out.println(customer.getName()+"-"+customer.getAge());
            }
