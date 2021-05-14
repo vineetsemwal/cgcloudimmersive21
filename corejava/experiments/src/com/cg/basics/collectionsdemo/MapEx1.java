@@ -5,7 +5,8 @@ import java.util.*;
 public class MapEx1 {
 
     public static void main(String[] args){
-        Map<String,Customer>map=new HashMap<>();
+        Comparator<String>comparator=new DescendingNameComparator();
+        Map<String,Customer>map=new TreeMap<>(comparator);
         String name1="priti",name2="prajakta",name3="maniratnam",name4="raju";
         Customer customer1=new Customer(name1,21);
         Customer customer2=new Customer(name2,22);
