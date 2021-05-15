@@ -3,7 +3,7 @@ package org.capg.apps.drawapp.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Canvas {
 
     private IShape shape;
@@ -15,7 +15,7 @@ public class Canvas {
         this.shape = shape;
     }
 
-    @Autowired
+
     public void setShape(IShape shape){
         this.shape = shape;
     }
