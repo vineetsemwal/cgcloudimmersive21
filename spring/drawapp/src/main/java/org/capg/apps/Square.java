@@ -1,6 +1,6 @@
 package org.capg.apps;
 
-public class Square {
+public class Square implements IShape{
 
     private int side;
 
@@ -11,7 +11,8 @@ public class Square {
         this.side = side;
     }
 
-    public int area(){
+    @Override
+    public double area(){
         return side*side;
     }
 

@@ -9,7 +9,8 @@ public class App
     }
 
     public void start(){
-        Canvas canvas=new Canvas();
+        Circle circle=new Circle(10);
+        Canvas canvas=new Canvas(circle);
         canvas.drawArea();
     }
 }

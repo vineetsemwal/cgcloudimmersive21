@@ -2,11 +2,18 @@ package org.capg.apps;
 
 public class Canvas {
 
-    private Square square=new Square(5);
+    private IShape shape;
 
+    public Canvas(IShape shape){
+        this.shape = shape;
+    }
+
+    public void setShape(IShape shape){
+        this.shape = shape;
+    }
 
     public void drawArea(){
-        int area=square.area();
+        double area=shape.area();
         System.out.println("drawing area, area="+area);
     }
 
