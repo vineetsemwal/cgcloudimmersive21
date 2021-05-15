@@ -1,6 +1,7 @@
 package org.capg.apps.drawapp;
 
 import org.capg.apps.drawapp.beans.Canvas;
+import org.capg.apps.drawapp.beans.Circle;
 import org.capg.apps.drawapp.beans.IShape;
 import org.capg.apps.drawapp.beans.Square;
 import org.springframework.beans.factory.BeanFactory;
@@ -19,6 +20,8 @@ public class App
        ApplicationContext context=new AnnotationConfigApplicationContext(JavaConfig.class);
        Square square=context.getBean(Square.class);
        System.out.println("square="+square.area() +" side="+square.getSide());
+
+        Circle circle=context.getBean(Circle.class);
 
        //Canvas canvas=context.getBean(Canvas.class);
        Canvas canvas1 =context.getBean("canvas",Canvas.class);

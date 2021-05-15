@@ -3,6 +3,8 @@ package org.capg.apps.drawapp.beans;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class Square implements IShape{
 
@@ -24,6 +26,11 @@ public class Square implements IShape{
 
     public void setSide(int side){
         this.side = side;
+    }
+
+    @PostConstruct
+    public void afterInitialization(){
+       System.out.println("inside square after initialization, side= "+side);
     }
 
     @Override

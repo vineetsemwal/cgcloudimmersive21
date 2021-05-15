@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 /**
  * scope types are singleton, prototype, request, session ,global session
  * a part from singleton , prototype , others are used for web programming
@@ -37,6 +39,11 @@ public class Canvas {
     public void drawArea(){
         double area=shape.area();
         System.out.println("drawing area, area="+area);
+    }
+
+    @PostConstruct
+    public void afterInit(){
+        System.out.println("inside canvas afterinit, shape= "+shape.area() );
     }
 
 }
