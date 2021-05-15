@@ -19,7 +19,8 @@ public class App
        Square square=context.getBean(Square.class);
        System.out.println("square="+square.area() +" side="+square.getSide());
 
-       Canvas canvas=context.getBean(Canvas.class);
+       //Canvas canvas=context.getBean(Canvas.class);
+       Canvas canvas =context.getBean("canvas",Canvas.class);
       // IShape shape=canvas.getShape();
        canvas.drawArea();
 
