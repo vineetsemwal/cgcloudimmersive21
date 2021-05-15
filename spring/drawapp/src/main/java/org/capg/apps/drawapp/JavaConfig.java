@@ -13,11 +13,6 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 public class JavaConfig {
 
-    @Bean
-   public Canvas canvas(IShape shape){
-       Canvas canvas = new Canvas(shape);
-       return canvas;
-   }
 
 
 }
