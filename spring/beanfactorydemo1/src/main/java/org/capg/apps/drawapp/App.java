@@ -3,8 +3,10 @@ package org.capg.apps.drawapp;
 import org.capg.apps.drawapp.beans.Square;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 public class App
 {
@@ -15,7 +17,9 @@ public class App
     }
 
     public void start(){
-      DefaultListableBeanFactory factory=new DefaultListableBeanFactory();
-      factory.
+     ClassPathResource resource=new ClassPathResource("beans.xml");	
+      BeanFactory factory=new XmlBeanFactory(resource);
+      Square square=factory.getBean(Square.class);
+      System.out.println("square side="+square.getSide());
     }
 }
