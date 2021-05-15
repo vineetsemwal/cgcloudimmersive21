@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 @Component
 public class Square implements IShape{
@@ -33,6 +34,12 @@ public class Square implements IShape{
        System.out.println("inside square after initialization, side= "+side);
     }
 
+    @PreDestroy
+    public void beforeDestroyed() {
+    	System.out.println("inside before destoryed");
+    }
+    
+    
     @Override
     public double area(){
         return side*side;

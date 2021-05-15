@@ -17,7 +17,9 @@ public class App
     }
 
     public void start(){
-       ApplicationContext context=new AnnotationConfigApplicationContext(JavaConfig.class);
+       AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(JavaConfig.class);
+       context.registerShutdownHook();
+       
        Square square=context.getBean(Square.class);
        System.out.println("square="+square.area() +" side="+square.getSide());
 
@@ -29,7 +31,8 @@ public class App
 
        Canvas canvas2=context.getBean(Canvas.class);
        boolean same= canvas1== canvas2;
-       System.out.print("canvas objects same="+same);
+       System.out.println("canvas objects same="+same);
+       
 
     }
 }
