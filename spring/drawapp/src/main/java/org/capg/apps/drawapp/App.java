@@ -15,10 +15,7 @@ public class App
     }
 
     public void start(){
-       AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
-       context.register(JavaConfig.class);
-       context.refresh();
-
+       ApplicationContext context=new AnnotationConfigApplicationContext(JavaConfig.class);
        Square square=context.getBean(Square.class);
        System.out.println("square="+square.area() +" side="+square.getSide());
 

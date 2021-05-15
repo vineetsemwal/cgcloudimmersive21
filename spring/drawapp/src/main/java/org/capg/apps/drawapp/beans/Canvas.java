@@ -15,7 +15,6 @@ public class Canvas {
         this.shape = shape;
     }
 
-
     @Autowired
     public void setShape(IShape shape){
         this.shape = shape;
