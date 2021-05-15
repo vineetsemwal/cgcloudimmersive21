@@ -1,4 +1,4 @@
-package org.capg.apps;
+package org.capg.apps.drawapp.beans;
 
 public interface IShape {
 
