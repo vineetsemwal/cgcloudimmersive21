@@ -16,18 +16,20 @@ import javax.annotation.PostConstruct;
 @Component
 public class Canvas {
 
+    @Qualifier("square")
+    @Autowired
     private IShape shape;
+
 
     public Canvas(){
 
     }
+
     public Canvas(IShape shape){
         this.shape = shape;
     }
 
 
-   @Qualifier("square")
-   @Autowired
     public void setShape(IShape shape){
         this.shape = shape;
     }
