@@ -1,11 +1,9 @@
 package com.cg.empmswithdb.dao;
 
 import com.cg.empmswithdb.entities.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.*;

@@ -26,7 +26,7 @@ public class JavaConfig {
     private static Logger Log = LoggerFactory.getLogger(JavaConfig.class);
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private Environment environment;
 
 
     @Bean
@@ -45,7 +45,6 @@ public class JavaConfig {
     public DataSource dataSource() {
         try {
             ComboPooledDataSource dataSource = new ComboPooledDataSource();
-            Environment environment = applicationContext.getEnvironment();
             String driver = environment.getProperty("db.driver");
             dataSource.setDriverClass(driver);
             String url = environment.getProperty("db.url");
@@ -63,7 +62,6 @@ public class JavaConfig {
 
     Properties ormProperties() {
         Properties properties = new Properties();
-        Environment environment = applicationContext.getEnvironment();
         String dialect = environment.getProperty("hibernate.dialect");
         String ddlAuto = environment.getProperty("hibernate.hbm2ddl.auto");
         String showSql = environment.getProperty("hibernate.show_sql");
