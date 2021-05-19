@@ -28,18 +28,26 @@
    
    findById(id: long) : Hotel 
    
+  
+  
+   
    }
    
    
    IHotelService{
-   
+ 
+   findHotelByName(Strind name): List<Hotel>
+    
+   findById(id) : Hotel
+ 
    add(name, address) : Hotel
    
    changeAddress(id, newAddress) : Hotel
    
    findAll() : List<Hotel>
+  
+   
        
-    findById(id: long) : Hotel
       
    }
    
@@ -51,6 +59,8 @@
   3)  find hotel  by id
    
   4) find all hotels
+
+  5) find all hotels information which have name provided by end user
     
  ### validations on id, name , address
  ### id can't be -ve, name cant be empty or null , address can't be empty or null
