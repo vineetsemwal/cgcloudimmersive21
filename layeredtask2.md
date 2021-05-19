@@ -19,20 +19,11 @@
    
    }
    
-   IProductDao{
-   
-   add(product: Product)
-   
-   update(product): Product
-   
-   findAll() : List<Product>
-   
-   findById(id: int) : Product   
-   
-   }
-   
+       
    
    IProductService{
+   
+   findById(id) : Product
    
    createProduct(name, price) : Product
    
@@ -40,7 +31,9 @@
    
    findAll() : List<Product>
    
-      findById(id: int) : Product   
+   findByPrice(price:double):List<Product> // products with price provided in argument
+   
+   
       
    }
    
@@ -52,6 +45,8 @@
   3)  find product by id
    
   4) find all products 
+
+  5) Find products by price
     
  ### validations on id, name , price
  ### id can't be -ve, name cant be empty or null , price can't be smaller than Zero
