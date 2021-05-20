@@ -28,6 +28,14 @@ public class EmployeeController {
         store.put(emp3.getId(),emp3);
     }
 
+    @GetMapping("/getemployee")
+    public ModelAndView getEmployee(){
+        ModelAndView response=new  ModelAndView("getemployeeinfo");
+        return response;
+    }
+
+
+
     @GetMapping("/welcome")
     public ModelAndView welcome(){
         System.out.println("inside welcome method");
@@ -36,7 +44,7 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/info")
+    @GetMapping("/processgetemp")
     public ModelAndView employeeDetails(@RequestParam("id")int id){
         Employee employee=store.get(id);
         ModelAndView response=new ModelAndView("employee","emp",employee);
