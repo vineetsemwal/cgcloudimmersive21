@@ -72,6 +72,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return saved;
     }
 
+    @Override
+    public void deleteById(int id) {
+        dao.deleteById(id);
+
+    }
 
     void validateId(int id) {
         if (id < 0) {

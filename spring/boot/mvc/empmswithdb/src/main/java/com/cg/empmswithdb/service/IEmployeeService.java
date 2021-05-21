@@ -17,4 +17,6 @@ public interface IEmployeeService {
     List<Employee> findEmployeesByName(String name);
 
     List<Employee> findEmployeesByNameAndSalary(String name, double salary);
+
+    void deleteById(int id);
 }

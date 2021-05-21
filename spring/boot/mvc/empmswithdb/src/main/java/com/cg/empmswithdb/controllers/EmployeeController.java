@@ -19,7 +19,6 @@ public class EmployeeController {
     private IEmployeeService service;
 
 
-
    @GetMapping("/fetchinfo")
     public ModelAndView fetchEmployee(@RequestParam("empid") int id){
        Employee employee= service.findById(id);
