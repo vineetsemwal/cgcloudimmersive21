@@ -35,9 +35,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public Employee findById(int empId) {
         validateId(empId);
         Optional<Employee> optional = dao.findById(empId);
+
         if (!optional.isPresent()) {
             throw new EmployeeNotFoundException("employee not found for id=" + empId);
         }
+
         return optional.get();
 
     }
@@ -48,6 +50,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return list;
     }
 
+    /**
+     *
+     *  finds all the employees by name
+     *
+     * @param name  name for which employees has to be searched
+     * @return List<Employee>  list of employees found
+     */
     @Override
     public List<Employee> findEmployeesByName(String name) {
         validateName(name);
