@@ -18,4 +18,6 @@ public class EmpmswithdbApplication {
 		Log.error("i am logged with error level");
 	}
 
+
+
 }
