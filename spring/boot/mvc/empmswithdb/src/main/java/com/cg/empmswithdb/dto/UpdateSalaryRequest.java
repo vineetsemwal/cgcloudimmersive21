@@ -1,9 +1,15 @@
 package com.cg.empmswithdb.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 public class UpdateSalaryRequest {
 
+    @Min(1)
     private int id;
 
+    @Max(400000)
+    @Min(15000)
     private double salary;
 
     public int getId() {

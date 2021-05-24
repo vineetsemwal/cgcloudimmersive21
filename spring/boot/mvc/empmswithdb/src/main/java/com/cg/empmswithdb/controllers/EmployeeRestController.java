@@ -12,10 +12,14 @@ import com.cg.empmswithdb.service.IEmployeeService;
 import com.cg.empmswithdb.util.EmployeeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
+@Validated
 @RequestMapping("/employees")
 @RestController
 public class EmployeeRestController {
@@ -31,7 +35,7 @@ public class EmployeeRestController {
      **/
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add")
-    public EmployeeDetails addEmployee(@RequestBody CreateEmployeeRequest requestData) {
+    public EmployeeDetails addEmployee(@RequestBody @Valid CreateEmployeeRequest requestData) {
         System.out.println("***inside addEmployee() name=" + requestData.getName() + " salary=" + requestData.getSalary());
         Employee created = service.add(requestData.getName(), requestData.getSalary());
         EmployeeDetails response = employeeUtil.toDetails(created);
@@ -42,7 +46,7 @@ public class EmployeeRestController {
      * effective uri  /employees/byid/1
      */
     @GetMapping("/byid/{id}")
-    public EmployeeDetails getEmployee(@PathVariable("id") int id) {
+    public EmployeeDetails getEmployee(@Min(1) @PathVariable("id") int id) {
         Employee employee = service.findById(id);
         EmployeeDetails response = employeeUtil.toDetails(employee);
         return response;
@@ -64,14 +68,14 @@ public class EmployeeRestController {
 
 
     @PutMapping("/update/salary")
-    public EmployeeDetails update(@RequestBody UpdateSalaryRequest requestData) {
+    public EmployeeDetails update(@RequestBody @Valid UpdateSalaryRequest requestData) {
         Employee employee = service.changeSalary(requestData.getId(), requestData.getSalary());
         EmployeeDetails response = employeeUtil.toDetails(employee);
         return response;
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int empId) {
+    public String delete(@Min(1) @PathVariable("id") int empId) {
 
         service.deleteById(empId);
 
