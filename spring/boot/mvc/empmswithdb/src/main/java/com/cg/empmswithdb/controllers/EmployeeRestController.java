@@ -10,6 +10,10 @@ import com.cg.empmswithdb.exceptions.InvalidEmployeeNameException;
 import com.cg.empmswithdb.exceptions.InvalidSalaryException;
 import com.cg.empmswithdb.service.IEmployeeService;
 import com.cg.empmswithdb.util.EmployeeUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
 
+@Api("employees" )
 @Validated
 @RequestMapping("/employees")
 @RestController
@@ -49,6 +54,15 @@ public class EmployeeRestController {
 
     /**
      * effective uri  /employees/byid/1
+     */
+    /*
+    @ApiOperation(value = "get employee by id", produces="application/json")
+    @ApiResponses(value={
+       @ApiResponse(code=200,message="successfully fetched by id",response=EmployeeDetails.class),
+       @ApiResponse(code=404,message="employee not found by id",response=String.class)
+
+    })
+
      */
     @GetMapping("/byid/{id}")
     public EmployeeDetails getEmployee(@Min(1) @PathVariable("id") int id) {
