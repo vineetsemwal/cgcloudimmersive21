@@ -10,6 +10,8 @@ import com.cg.empmswithdb.exceptions.InvalidEmployeeNameException;
 import com.cg.empmswithdb.exceptions.InvalidSalaryException;
 import com.cg.empmswithdb.service.IEmployeeService;
 import com.cg.empmswithdb.util.EmployeeUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.*;
@@ -23,6 +25,7 @@ import java.util.List;
 @RequestMapping("/employees")
 @RestController
 public class EmployeeRestController {
+    private static final Logger Log= LoggerFactory.getLogger(EmployeeRestController.class);
 
     @Autowired
     private EmployeeUtil employeeUtil;
@@ -38,6 +41,8 @@ public class EmployeeRestController {
     public EmployeeDetails addEmployee(@RequestBody @Valid CreateEmployeeRequest requestData) {
         System.out.println("***inside addEmployee() name=" + requestData.getName() + " salary=" + requestData.getSalary());
         Employee created = service.add(requestData.getName(), requestData.getSalary());
+        Log.info("inside add created="+created);
+        Log.info("inside add created="+created.getId()+"-"+created.getName());
         EmployeeDetails response = employeeUtil.toDetails(created);
         return response;
     }
