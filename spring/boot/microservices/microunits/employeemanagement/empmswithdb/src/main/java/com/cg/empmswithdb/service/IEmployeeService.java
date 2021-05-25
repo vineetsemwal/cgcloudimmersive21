@@ -19,4 +19,6 @@ public interface IEmployeeService {
     List<Employee> findEmployeesByNameAndSalary(String name, double salary);
 
     void deleteById(int id);
+
+    Employee addToProject(Integer empId, Long projectId);
 }

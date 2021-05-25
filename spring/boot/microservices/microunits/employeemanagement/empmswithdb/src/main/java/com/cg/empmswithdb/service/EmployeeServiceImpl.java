@@ -1,6 +1,7 @@
 package com.cg.empmswithdb.service;
 
 import com.cg.empmswithdb.dao.IEmployeeRepository;
+import com.cg.empmswithdb.dto.EmployeeDetails;
 import com.cg.empmswithdb.entities.Employee;
 import com.cg.empmswithdb.exceptions.EmployeeNotFoundException;
 import com.cg.empmswithdb.exceptions.InvalidEmployeeNameException;
@@ -79,6 +80,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employee.setSalary(newSalary);
         Employee saved = dao.save(employee);
         return saved;
+    }
+
+    @Override
+    public Employee addToProject(Integer empId, Long projectId){
+       Employee employee= findById(empId);
+       employee.setProjectId(projectId);
+       employee=dao.save(employee);
+       return employee;
     }
 
     @Override

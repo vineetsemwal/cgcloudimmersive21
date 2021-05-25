@@ -12,6 +12,8 @@ public class Employee {
     private String name;
     private double salary;
 
+    private Long projectId;
+
     public Employee(){
 
     }
@@ -43,6 +45,14 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     @Override

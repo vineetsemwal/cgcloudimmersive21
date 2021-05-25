@@ -4,17 +4,13 @@ public class EmployeeDetails {
     private Integer id;
     private String name;
     private double salary;
-
+    private Long projectId;
+    private String projectName;
 
     public EmployeeDetails(){
 
     }
 
-    public EmployeeDetails(int id, String name, double salary){
-        this.id =id;
-        this.name = name;
-        this.salary=salary;
-    }
 
     public Integer getId() {
         return id;
@@ -38,5 +34,21 @@ public class EmployeeDetails {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 }

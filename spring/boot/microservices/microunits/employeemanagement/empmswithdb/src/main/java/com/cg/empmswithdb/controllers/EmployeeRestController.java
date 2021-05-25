@@ -2,6 +2,7 @@ package com.cg.empmswithdb.controllers;
 
 import com.cg.empmswithdb.dto.CreateEmployeeRequest;
 import com.cg.empmswithdb.dto.EmployeeDetails;
+import com.cg.empmswithdb.dto.ProjectDetails;
 import com.cg.empmswithdb.dto.UpdateSalaryRequest;
 import com.cg.empmswithdb.entities.Employee;
 import com.cg.empmswithdb.exceptions.EmployeeNotFoundException;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -38,6 +40,9 @@ public class EmployeeRestController {
     @Autowired
     private IEmployeeService service;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     /**
      * effective uri  /employees/add
      **/
@@ -48,7 +53,8 @@ public class EmployeeRestController {
         Employee created = service.add(requestData.getName(), requestData.getSalary());
         Log.info("inside add created="+created);
         Log.info("inside add created="+created.getId()+"-"+created.getName());
-        EmployeeDetails response = employeeUtil.toDetails(created);
+        ProjectDetails project = null;// at start project is not assigned
+        EmployeeDetails response = employeeUtil.toDetails(created,project);
         return response;
     }
 
@@ -67,7 +73,12 @@ public class EmployeeRestController {
     @GetMapping("/byid/{id}")
     public EmployeeDetails getEmployee(@Min(1) @PathVariable("id") int id) {
         Employee employee = service.findById(id);
-        EmployeeDetails response = employeeUtil.toDetails(employee);
+        Long projectId= employee.getProjectId();
+        ProjectDetails project=null;
+        if(projectId!=null && projectId!=0){
+          project= fetchProjectDetails(projectId);
+        }
+        EmployeeDetails response = employeeUtil.toDetails(employee, project);
         return response;
     }
 
@@ -78,18 +89,24 @@ public class EmployeeRestController {
      *  fetches and returns all employees
      *
      */
+  /*
     @GetMapping
     public List<EmployeeDetails> allEmployees() {
         List<Employee> list = service.findAll();
         List<EmployeeDetails> response = employeeUtil.toDetailsList(list);
         return response;
     }
-
+*/
 
     @PutMapping("/update/salary")
     public EmployeeDetails update(@RequestBody @Valid UpdateSalaryRequest requestData) {
         Employee employee = service.changeSalary(requestData.getId(), requestData.getSalary());
-        EmployeeDetails response = employeeUtil.toDetails(employee);
+        Long projectId=employee.getProjectId();
+        ProjectDetails project =null;
+        if(projectId!=null && projectId!=0){
+            project= fetchProjectDetails(projectId);
+        }
+        EmployeeDetails response = employeeUtil.toDetails(employee, project);
         return response;
     }
 
@@ -97,9 +114,27 @@ public class EmployeeRestController {
     public String delete(@Min(1) @PathVariable("id") int empId) {
 
         service.deleteById(empId);
-
         return "employee deleted";
 
+    }
+
+
+
+
+    @PutMapping("/project/add")
+    public EmployeeDetails addToProject(@RequestBody AddToProjectRequest request){
+        long projectId=request.getProjectId();
+       Employee employee= service.addToProject(request.getEmpId(),projectId);
+       ProjectDetails project=fetchProjectDetails(projectId);
+       EmployeeDetails response=employeeUtil.toDetails(employee,project);
+       return response;
+    }
+
+
+    public ProjectDetails fetchProjectDetails(long projectId){
+        String url="http://localhost:8586/projects/byid/"+projectId;
+        ProjectDetails project=restTemplate.getForObject(url, ProjectDetails.class);
+         return project;
     }
 
 }
