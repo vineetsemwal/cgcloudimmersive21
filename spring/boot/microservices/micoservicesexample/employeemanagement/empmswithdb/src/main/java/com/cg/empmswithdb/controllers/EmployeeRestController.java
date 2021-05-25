@@ -121,7 +121,7 @@ public class EmployeeRestController {
 
 
     public ProjectDetails fetchProjectDetails(long projectId){
-        String url="http://localhost:8586/projects/byid/"+projectId;
+        String url="http://projectms/projects/byid/"+projectId;
         ProjectDetails project=restTemplate.getForObject(url, ProjectDetails.class);
          return project;
     }
