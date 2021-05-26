@@ -15,7 +15,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.postgresql:postgresql:42.2.20'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
@@ -24,6 +23,8 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
 
+	//implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.5.0'
+	implementation 'org.postgresql:postgresql:42.2.20'
 
 	providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
 	providedRuntime 'taglibs:standard:1.1.2'
