@@ -43,6 +43,7 @@ public class ProjectController {
     }
 
     /*
+    @PutMapping("/update/name")
     public ResponseEntity<ProjectDetails> updateName(@RequestBody UpdateProjectNameRequest request){
         ProjectDetails response= service.updateProjectName(request);
         ResponseEntity<ProjectDetails>responseEntity=new  ResponseEntity<>(response, HttpStatus.OK);
