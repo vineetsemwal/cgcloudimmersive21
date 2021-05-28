@@ -4,10 +4,12 @@ import com.cg.empmswithdb.dto.*;
 import com.cg.empmswithdb.entities.Employee;
 import com.cg.empmswithdb.service.IEmployeeService;
 import com.cg.empmswithdb.util.EmployeeUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Api("employees" )
 @Validated
@@ -31,6 +34,12 @@ public class EmployeeRestController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${projectms.baseUrl}")
+    private String baseProjectUrl;
+
+
+    private ProjectDetails cachedTopProject;
 
     /**
      * effective uri  /employees/add
@@ -120,10 +129,49 @@ public class EmployeeRestController {
     }
 
 
-    public ProjectDetails fetchProjectDetails(long projectId){
-        String url="http://projectms/projects/byid/"+projectId;
-        ProjectDetails project=restTemplate.getForObject(url, ProjectDetails.class);
-         return project;
+
+    @GetMapping("/bestproject/")
+    @HystrixCommand(fallbackMethod = "getEmployeesInTopCachedProject")
+    public List<EmployeeDetails> getEmployeesInTopProject(){
+        Log.info("inside getEmployeesInTopProject");
+       ProjectDetails project= fetchTopProject();
+       Long projectId= project.getId();
+       List<Employee>employees= service.findEmployeesByProject(projectId);
+       List<EmployeeDetails>response= employeeUtil.toDetailsList(employees,project);
+       return response;
     }
 
+
+    public List<EmployeeDetails> getEmployeesInTopCachedProject(){
+        Log.info("inside getEmployeesInTopCachedProject");
+        ProjectDetails project= getCachedTopProject();
+        Long projectId= project.getId();
+        List<Employee>employees= service.findEmployeesByProject(projectId);
+        List<EmployeeDetails>response= employeeUtil.toDetailsList(employees,project);
+        return response;
+    }
+
+    public ProjectDetails fetchProjectDetails(long projectId){
+        String url=baseProjectUrl+"/byid/"+projectId;
+        ProjectDetails project=restTemplate.getForObject(url, ProjectDetails.class);
+        return project;
+    }
+
+
+    ProjectDetails fetchTopProject(){
+        String url=baseProjectUrl+"/best";
+        Log.info("inside fetchtopProject , url="+url);
+        ProjectDetails project =restTemplate.getForObject(url, ProjectDetails.class);
+        setCachedTopProject(project);
+        return project;
+    }
+
+
+    public ProjectDetails getCachedTopProject(){
+        return cachedTopProject;
+    }
+
+    public void setCachedTopProject(ProjectDetails topProject) {
+        this.cachedTopProject = topProject;
+    }
 }

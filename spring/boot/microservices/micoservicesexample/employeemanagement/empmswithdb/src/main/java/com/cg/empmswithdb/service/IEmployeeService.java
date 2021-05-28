@@ -21,4 +21,6 @@ public interface IEmployeeService {
     void deleteById(int id);
 
     Employee addToProject(Integer empId, Long projectId);
+
+    List<Employee>findEmployeesByProject(long projectId);
 }

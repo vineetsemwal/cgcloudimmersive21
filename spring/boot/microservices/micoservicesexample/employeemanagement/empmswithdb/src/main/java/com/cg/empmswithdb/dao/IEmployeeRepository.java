@@ -10,4 +10,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee,Integer> {
 
     List<Employee>findByNameAndSalary(String name, double salary);
 
+    List<Employee>findByProjectId(long projectId);
+
 }

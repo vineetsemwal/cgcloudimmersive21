@@ -25,17 +25,23 @@ public class EmployeeUtil {
         return details;
     }
 
-    /*
-    public List<EmployeeDetails> toDetailsList(Collection<Employee> employees){
-     //  List<EmployeeDetails>desired =employees.stream().map(emp-> toDetails(emp))
-      //  .collect(Collectors.toList());
+
+    public List<EmployeeDetails> toDetailsList(Collection<Employee> employees, ProjectDetails project){
+      /*
+      same job using stream api
+        List<EmployeeDetails>des= employees.stream()
+               .map(emp->toDetails(emp,project))
+               .collect(Collectors.toList());
+       */
+
         List<EmployeeDetails>desired=new ArrayList<>();
-        for(Employee emp:employees){
-           EmployeeDetails details= toDetails(emp);
+        for(Employee  employee:employees){
+          EmployeeDetails details  =toDetails(employee,project);
            desired.add(details);
         }
-       return desired;
+        return desired;
+
     }
 
-     */
+
 }

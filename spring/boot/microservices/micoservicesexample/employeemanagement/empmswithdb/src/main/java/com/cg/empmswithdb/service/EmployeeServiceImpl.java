@@ -93,7 +93,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public void deleteById(int id) {
         dao.deleteById(id);
+    }
 
+    @Override
+    public List<Employee>findEmployeesByProject(long projectId){
+        List<Employee>employees= dao.findByProjectId(projectId);
+        return employees;
     }
 
     void validateId(int id) {
