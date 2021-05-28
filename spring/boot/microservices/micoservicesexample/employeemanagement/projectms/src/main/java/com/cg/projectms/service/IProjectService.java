@@ -7,10 +7,13 @@ import com.cg.projectms.entities.Project;
 
 public interface IProjectService {
 
-   ProjectDetails add(CreateProjectRequest request);
+    ProjectDetails add(CreateProjectRequest request);
 
-   ProjectDetails updateProjectName(UpdateProjectNameRequest request);
+    ProjectDetails updateProjectName(UpdateProjectNameRequest request);
 
-   Project findProjectById(Long id);
-   ProjectDetails findProjectDetailsById(Long id);
+    Project findProjectById(Long id);
+
+    ProjectDetails findProjectDetailsById(Long id);
+
+    ProjectDetails findBestProject();
 }

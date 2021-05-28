@@ -57,6 +57,11 @@ public class ProjectController {
        return response;
     }
 
+    @GetMapping("/best")
+    public ProjectDetails bestProject(){
+       ProjectDetails response =service.findBestProject();
+      return response;
+    }
 
 
 

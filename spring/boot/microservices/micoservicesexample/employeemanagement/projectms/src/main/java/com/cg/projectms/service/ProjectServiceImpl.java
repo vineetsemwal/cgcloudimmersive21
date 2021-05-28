@@ -26,6 +26,7 @@ public class ProjectServiceImpl implements IProjectService{
     @Override
     public ProjectDetails add(CreateProjectRequest request) {
         Project project = new Project(request.getName());
+        project.setCost(request.getCost());
         Project saved= repository.save(project);
         ProjectDetails details= projectUtil.toProjectDetails(project);
         return details;
@@ -54,5 +55,12 @@ public class ProjectServiceImpl implements IProjectService{
         Project saved=repository.save(project);
         ProjectDetails details= projectUtil.toProjectDetails(project);
         return details;
+    }
+
+    @Override
+    public ProjectDetails findBestProject(){
+       Project project= repository.findFirstByOrderByCostDesc();
+       ProjectDetails desired=projectUtil.toProjectDetails(project);
+       return desired;
     }
 }

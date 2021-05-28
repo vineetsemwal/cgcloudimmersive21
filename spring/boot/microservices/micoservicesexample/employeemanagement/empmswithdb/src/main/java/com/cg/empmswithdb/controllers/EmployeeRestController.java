@@ -130,7 +130,7 @@ public class EmployeeRestController {
 
 
 
-    @GetMapping("/bestproject/")
+    @GetMapping("/bestproject")
     @HystrixCommand(fallbackMethod = "getEmployeesInTopCachedProject")
     public List<EmployeeDetails> getEmployeesInTopProject(){
         Log.info("inside getEmployeesInTopProject");
