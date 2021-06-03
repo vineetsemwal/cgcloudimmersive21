@@ -4,7 +4,7 @@ public class OrderByEnumExample {
 
     public static void main(String[] args){
         OrderByEnumExample example=new OrderByEnumExample();
-        OrderBy order=OrderBy.desc;
+        OrderBy order=OrderBy.asc;
         example.orderElements(order);
     }
 
