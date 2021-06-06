@@ -21,11 +21,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private IEmployeeRepository dao;
 
 
+    public Employee  newEmployee(String name, double salary){
+        return new Employee(name, salary);
+    }
+
     @Override
     public Employee add(String name, double salary) {
-        validateName(name);
-        validateSalary(salary);
-        Employee employee = new Employee(name, salary);
+       // validateName(name);
+        //validateSalary(salary);
+        Employee employee = newEmployee(name, salary);
         Employee saved = dao.save(employee);//works like merge() in entitymanager
         return saved;
     }
@@ -33,7 +37,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public Employee findById(int empId) {
-        validateId(empId);
         Optional<Employee> optional = dao.findById(empId);
 
         if (!optional.isPresent()) {
