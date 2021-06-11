@@ -1,0 +1,44 @@
+Exception handling
+
+create exception class VotingException
+
+
+class Voting {
+   int age
+   
+  String message
+
+}
+
+class VotingValidate {
+
+/**
+<18 or >75 throw VotingException
+     msg: Age is not in valid range
+      
+**/
+  checkVotingAge(int age) : void {
+   
+      }
+      
+/**
+if age is valid , then message in voting object should be age is valid
+
+**/
+ void  intAgeValid(Voting voting) {
+  check age validity and return msg
+
+}
+
+/**
+  check if in numeric format
+   if not numeric throw VotingException
+   if length is 2 and if <18 >75 throw VotingException
+   if length 2 and within range "Correct age for voting"
+
+**/
+
+  Voting  stringAgeValid(String age){
+
+}
+
