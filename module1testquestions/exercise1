@@ -1,0 +1,56 @@
+
+
+class TicketBookingImpl{
+
+ String passengerName
+ 
+ LocalDate traveldate
+ 
+ int noOftickets
+ 
+ double eachTicketAmount
+ 
+ // create constructors and getters and setters
+
+}
+
+
+
+Create two exception classes
+
+TravelDateException, NegativeValueException
+
+class BookingImpl{
+
+  String validate(TicketBooking tbk);
+  
+  //check if travel date is before  current date then throw exception with message "Travel date is before current date"
+  
+  if noOfTickets<0 then throw NegativeValueException with message "No of tickets can't be negative"
+  
+  double computeBillAmount(TicketBooking tbk){
+  
+  double total=0;
+  
+  try{
+  validate(tbk);
+  
+  
+  // calculate total  ticket price * noOfTickets
+  
+  }
+  catch(TravelDateException e){
+    total=0
+  }
+  
+  catch (NegativeValueException e){
+  total=-1
+  }
+  
+  return total ;
+  
+  }
+
+  
+
+}
