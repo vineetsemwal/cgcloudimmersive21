@@ -1,0 +1,34 @@
+
+class Citizen
+
+{
+  name: String
+  
+  location :String  //city
+  
+  pincode : int
+
+  constructors + getters+ setters
+
+}
+
+class CitizenAddress{
+
+  citizenList: ArrayList<Citizen>// field
+  
+
+// sort based on pincode in ascending order
+  showCitizensInAcendingByPin(): ArrayList<Citizen>  
+
+
+// sort based on pincode in descending order
+  showCitizensInAcendingByPin(): ArrayList<Citizen>  
+
+//
+  showCitizensInAscendingByLocation():ArrayList<Citizen>
+
+
+}
+
+
+Create appropriate comparators
