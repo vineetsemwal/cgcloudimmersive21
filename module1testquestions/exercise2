@@ -25,7 +25,7 @@ class CitizenAddress{
   showCitizensInAcendingByPin(): ArrayList<Citizen>  
 
 //
-  showCitizensInAscendingByLocation():ArrayList<Citizen>
+  showCitizensInDescendingByLocation():ArrayList<Citizen>
 
 
 }
